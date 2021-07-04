@@ -1,6 +1,6 @@
-lesson 5: exercise 3: 
+/* lesson 5: exercise 3: 
 Write a program that asks the user to input two Boolean values and demonstrates
-the result of various bitwise operators on them.
+the result of various bitwise operators on them. */
 
 #include <iostream>
 #include <bitset>

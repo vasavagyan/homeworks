@@ -3,7 +3,7 @@
 char* reverse(char*);
 
 int main(){
-  char word[6]= {'h','e','l','l','o','\0'};
+  char word[5]= {'h','e','l','l','o'};
   char* p = reverse(word);
   for (int i=0; i<5; ++i){
     std::cout<<p[i];

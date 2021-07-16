@@ -22,7 +22,7 @@ int tvi_tvanshan(int num, int q){
     num/=10;
   }
   int new_num =0;
-  for (int i=0; i<2; ++i){
+  for (int i=0; i<q; ++i){
       new_num = new_num*10 + tmp%10;
       tmp/=10;
   }

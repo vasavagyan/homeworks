@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <cstring>
 
 void make_capital(std::string&);
 

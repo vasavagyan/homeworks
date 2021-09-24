@@ -1,0 +1,74 @@
+#include <iostream>
+#include <vector>
+#include <stdlib.h>
+
+int k_max_value(std::vector<int> nums, int k);
+
+int main()
+{
+    std::vector<int> arr = {2, 3, 1, 4, 5, 8, 7, 6};
+    std::cout<<"enter index"<<std::endl;
+    int k;
+    std::cin>>k;
+    
+    std::cout<<"the "<<k<<"'th max value is "<<k_max_value(arr, k)<<std::endl;
+
+    return 0;
+}
+
+int k_max_value(std::vector<int> nums, int k){
+
+        if(k>nums.size() || k<=0){
+                std::cout<<"k is invalid input"<<std::endl;
+                std::exit(-1);
+        }
+        
+        if(k==1){                   //amenamec elementn a
+            int max=nums[0];
+            for(int i=1; i<nums.size(); ++i){
+                if(nums[i]>max){
+                    max=nums[i];
+                }
+            }
+            return max;
+        }
+        
+        if(k==nums.size()){         //amenapoqr elementn a
+            int min=nums[0];
+            for(int i=1; i<nums.size(); ++i){
+                if(nums[i]<min){
+                    min=nums[i];
+                }
+            }
+            return min;
+        } 
+        
+        //stexic sksum en k-i ayl depqer@
+        
+        int* max = new int[k];
+        max[0]=nums[0];
+        int tmp = 0;
+        for(int count=0; count<k; ++count){
+            for(int i=1; i<nums.size(); ++i){
+                if(count==0){    //arajin krugi vaxt
+                    if(nums[i]>max[count]){
+                        for(int j=k-1; j>count; --j){
+                            max[j]=max[j-1];
+                        }
+                        max[count]=nums[i];
+                    }
+                }else{  //hajord krugneri vaxt 2rd paymann el a stugum
+                    if(nums[i]>max[count] && nums[i]<max[count-1]){
+                        for(int j=k-1; j>count; --j){
+                            max[j]=max[j-1];
+                        }
+                        max[count]=nums[i];
+                    }
+                }
+            }
+        }
+
+        int solution = max[k-1];
+        delete[] max;
+        return solution;
+}
